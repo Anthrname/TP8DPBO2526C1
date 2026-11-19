@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <title>DATA_PAGE_TITLE - Sistem Akademik Dosen</title>
+
+  <style>
+    :root {
+      --primary-color: #0284c7;
+      --secondary-color: #0369a1;
+      --bg-light: #f8fafc;
+    }
+    body {
+      background-color: var(--bg-light);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    .top-navbar {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .top-navbar .navbar-brand {
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .card-custom {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      background: #ffffff;
+      margin-bottom: 24px;
+    }
+    .card-header-custom {
+      border-top-left-radius: 12px !important;
+      border-top-right-radius: 12px !important;
+      padding: 16px 20px;
+      font-weight: 600;
+    }
+    .table-custom thead {
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+    .table-custom th {
+      font-weight: 600;
+      border-bottom: 2px solid #bae6fd;
+    }
+    .badge-dept {
+      background-color: #e0f2fe;
+      color: #0369a1;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+    .btn-action {
+      padding: 4px 10px;
+      font-size: 0.875rem;
+      border-radius: 6px;
+    }
+    .badge-counter {
+      background: #bae6fd;
+      color: #0369a1;
+      font-size: 0.9rem;
+      border-radius: 20px;
+      padding: 4px 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark top-navbar mb-4">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand d-flex align-items-center" href="index.php">
+        <i class="bi bi-mortarboard-fill me-2 fs-4"></i>
+        <span>Academic Management</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link DATA_NAV_LECTURER" href="index.php">
+              <i class="bi bi-people-fill me-1"></i> Dosen (Lecturers)
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link DATA_NAV_DEPARTMENT" href="department.php">
+              <i class="bi bi-building me-1"></i> Program Studi (Departments)
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link DATA_NAV_COURSE" href="course.php">
+              <i class="bi bi-book-half me-1"></i> Mata Kuliah (Courses)
+            </a>
+          </li>
+        </ul>
+        <span class="navbar-text text-white fw-light">
+          TP 8 DPBO 2024/2025 | MVC Architecture
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <div class="container-fluid px-4">
+    <div class="row">
+      
+      <!-- Sisi Kiri: Form Input / Update -->
+      <div class="col-lg-4 col-md-5">
+        <div class="card card-custom">
+          <div class="card-header card-header-custom bg-primary text-white d-flex align-items-center justify-content-between">
+            <span><i class="bi bi-person-plus-fill me-2"></i>DATA_FORM_TITLE</span>
+            <small class="badge bg-light text-primary">Form</small>
+          </div>
+          <div class="card-body p-4">
+            <form method="POST" action="DATA_FORM_ACTION">
+              DATA_FORM_INPUT_ID
+
+              <div class="mb-3">
+                <label class="form-label fw-bold small text-secondary">NAMA LENGKAP & GELAR</label>
+                <input type="text" name="name" class="form-control" placeholder="Contoh: Dr. Nama, M.Kom." value="DATA_NAME_VALUE" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-bold small text-secondary">NIDN</label>
+                <input type="text" name="nidn" class="form-control" placeholder="Contoh: 0015018001" value="DATA_NIDN_VALUE" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-bold small text-secondary">NO. TELEPON</label>
+                <input type="text" name="phone" class="form-control" placeholder="Contoh: 081234567890" value="DATA_PHONE_VALUE" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-bold small text-secondary">TANGGAL BERGABUNG</label>
+                <input type="date" name="join_date" class="form-control" value="DATA_JOIN_DATE_VALUE" required>
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label fw-bold small text-secondary">PROGRAM STUDI / DEPARTEMEN</label>
+                <select name="department_id" class="form-select" required>
+                  <option value="">-- Pilih Program Studi --</option>
+                  DATA_DEPARTMENT_OPTIONS
+                </select>
+              </div>
+
+              <div class="d-grid gap-2">
+                <button type="submit" name="DATA_BUTTON_NAME" class="btn btn-primary fw-bold py-2">
+                  DATA_BUTTON_TEXT
+                </button>
+                DATA_BUTTON_CANCEL
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sisi Kanan: Tabel Data -->
+      <div class="col-lg-8 col-md-7">
+        <div class="card card-custom">
+          <div class="card-header card-header-custom bg-white d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-table text-primary fs-5 me-2"></i>
+              <span class="fs-5 text-dark">Tabel Data Dosen</span>
+            </div>
+            <span class="badge-counter">Total: DATA_TOTAL_COUNT Dosen</span>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-hover table-custom align-middle mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-center" style="width: 50px;">ID</th>
+                    <th>NAMA DOSEN</th>
+                    <th>NIDN</th>
+                    <th>TELEPON</th>
+                    <th>TANGGAL GABUNG</th>
+                    <th>PROGRAM STUDI</th>
+                    <th class="text-center" style="width: 140px;">AKSI</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  DATA_TABLE_CONTENT
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="text-center py-4 text-muted small">
+    &copy; 2024 - 2025 Najib Nurohman (NIM: 2509653) - Kelas C1 | Desain Pemrograman Berorientasi Objek (DPBO)
+  </footer>
+
+  <script src="bootstrap.bundle.min.js"></script>
+</body>
+</html>
